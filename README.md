@@ -30,9 +30,16 @@ O **ACTA** é um aplicativo de gerenciamento de tarefas (To-Do List) desenvolvid
 O projeto foi estruturado utilizando uma **Arquitetura em Camadas (Layered Architecture)**, visando a separação de responsabilidades (SoC) e facilidade de manutenção:
 
 * **Models**: Definição das entidades de dados (`TaskModel`).
-* **Views**: Telas da interface do usuário (`Onboarding`, `Home`).
+* **Views**: Telas da interface do usuário (`Onboarding`, `Home`, `Lixeira`).
 * **Services**: Camada de lógica externa e persistência (`StorageService`).
 * **Widgets**: Componentes de interface reutilizáveis (`ModalTarefa`).
+
+---
+
+## 🎨 Protótipo no Figma
+
+Protótipo base feito no Figma, UX e UI mais bem desenvolvidos no projeto real:
+* [Link para visualização](https://www.figma.com/design/INT2kHn1PtpzmPCyMIyAYJ/Prototipo-ACTA?node-id=0-1&t=EAuLKM5RS0NXaEEw-1)
 
 ---
 
