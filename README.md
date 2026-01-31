@@ -21,7 +21,7 @@ O **ACTA** é um aplicativo de gerenciamento de tarefas (To-Do List) desenvolvid
 * **Sistema de Prioridades**: Classificação de tarefas em Alta, Média ou Baixa (com sinalização por cores).
 * **Ordenação Inteligente**: As tarefas são organizadas automaticamente por nível de prioridade e data de criação.
 * **Persistência de Dados**: Informações salvas localmente, garantindo que nada se perca ao fechar o app.
-* **Limpeza Total**: Opção de remover todas as tarefas de uma vez com confirmação.
+* **Limpeza**: Opção de remover todas as tarefas de uma vez com confirmação, swipe-to-delete individual.
 
 ---
 
@@ -49,7 +49,7 @@ O projeto foi estruturado utilizando uma **Arquitetura em Camadas (Layered Archi
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/SEU_USUARIO/acta.git](https://github.com/SEU_USUARIO/acta.git)
+    git clone [https://github.com/rianeduardo/acta.git](https://github.com/rianeduardo/acta.git)
     ```
 2.  **Instale as dependências:**
     ```bash
@@ -71,4 +71,4 @@ Este repositório documenta a evolução do projeto através de commits estrutur
 4.  **Business Logic**: Integração final, filtros e ordenação.
 
 ---
-Desenvolvido por Rian - 2026
+Desenvolvido por Rian Eduardo - 2026
