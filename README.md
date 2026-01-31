@@ -49,7 +49,7 @@ O projeto foi estruturado utilizando uma **Arquitetura em Camadas (Layered Archi
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/rianeduardo/acta.git](https://github.com/rianeduardo/acta.git)
+    git clone https://github.com/rianeduardo/acta.git
     ```
 2.  **Instale as dependências:**
     ```bash
