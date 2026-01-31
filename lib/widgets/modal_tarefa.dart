@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:actav1/models/tarefa_model.dart';
+import 'package:actav1/services/storage_servico.dart';
 
 class AddTaskModal extends StatefulWidget {
   const AddTaskModal({super.key});
@@ -15,6 +17,7 @@ class _AddTaskModalState extends State<AddTaskModal> {
   @override
   Widget build(BuildContext context) {
     return Padding(
+      // Faz o modal subir quando o teclado aparece
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
@@ -26,6 +29,7 @@ class _AddTaskModalState extends State<AddTaskModal> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Cabeçalho Azul
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(vertical: 12),
@@ -55,11 +59,40 @@ class _AddTaskModalState extends State<AddTaskModal> {
                   _buildPriorityMenu(),
                   const SizedBox(height: 30),
 
+                  // BOTÃO CRIAR - O CORAÇÃO DA LÓGICA
                   SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (titleController.text.isNotEmpty) {
+                          // 1. Busca as tarefas que já existem
+                          List<TaskModel> tarefasAtuais = await StorageService.getTasks();
+
+                          // 2. Cria a nova tarefa
+                          TaskModel novaTarefa = TaskModel(
+                            id: DateTime.now().toString(), // ID único baseado no tempo
+                            title: titleController.text,
+                            description: descController.text,
+                            priority: selectedPriority,
+                            createdAt: DateTime.now(),
+                          );
+
+                          // 3. Adiciona na lista e salva no celular
+                          tarefasAtuais.add(novaTarefa);
+                          await StorageService.saveTasks(tarefasAtuais);
+
+                          // 4. FECHA O MODAL (Volta para a Home)
+                          if (mounted) {
+                            Navigator.pop(context);
+                          }
+                        } else {
+                          // Opcional: Avisar que o título é obrigatório
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Dê um título para a tarefa!')),
+                          );
+                        }
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF22C55E),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),

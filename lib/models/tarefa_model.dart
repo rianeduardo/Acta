@@ -6,6 +6,8 @@ class TaskModel {
   String description;
   String priority;
   DateTime createdAt;
+  bool isDone;
+  bool isDeleted;
 
   TaskModel({
     required this.id,
@@ -13,6 +15,8 @@ class TaskModel {
     required this.description,
     required this.priority,
     required this.createdAt,
+    this.isDone = false,
+    this.isDeleted = false,
   });
 
   Map<String, dynamic> toMap() {
@@ -22,6 +26,8 @@ class TaskModel {
       'description': description,
       'priority': priority,
       'createdAt': createdAt.toIso8601String(),
+      'isDone': isDone,
+      'isDeleted': isDeleted,
     };
   }
 
@@ -32,6 +38,8 @@ class TaskModel {
       description: map['description'],
       priority: map['priority'],
       createdAt: DateTime.parse(map['createdAt']),
+      isDone: map['isDone'] ?? false,
+      isDeleted: map['isDeleted'] ?? false,
     );
   }
 

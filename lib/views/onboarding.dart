@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:actav1/views/home.dart';
+import 'package:actav1/services/storage_servico.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // **CONTROLLER PARA O FUTURO**
     final TextEditingController nameController = TextEditingController();
 
     return Scaffold(
@@ -87,12 +87,19 @@ class WelcomePage extends StatelessWidget {
                     width: double.infinity,
                     height: 55,
                     child: ElevatedButton(
-                      onPressed: () {
-                        // **TESTE FLUXO**
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const HomePage()),
-                        );
+                      onPressed: () async {
+                        String nomeDigitado = nameController.text;
+
+                        if (nomeDigitado.isNotEmpty) {
+                          // 1. Salva o nome
+                          await StorageService.saveName(nomeDigitado);
+
+                          // 2. Vai para a Home e impede o usuário de voltar para o Onboarding
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => const HomePage()),
+                          );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF22C55E),
